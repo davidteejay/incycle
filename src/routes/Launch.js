@@ -4,7 +4,7 @@ import { Actions } from 'react-native-router-flux'
 
 export default class Launch extends Component {
 	async componentWillMount(){
-		await AsyncStorage.getItem('userData')
+		await AsyncStorage.getItem('user')
 			.then(user => {
 				if (user) Actions.Main()
 				else Actions.Auth()

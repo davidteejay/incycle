@@ -3,10 +3,16 @@ import { View, ActivityIndicator, Modal, Platform } from "react-native"
 
 import colors from "../config/colors"
 
-export default ({ modalVisible = false, onRequestClose = () => { return null }, backgroundColor = '#fff', color = colors.green }) => {
+export default ({
+	modalVisible = false,
+	onRequestClose = () => { return null },
+	backgroundColor = '#ffffff',
+	color = colors.green,
+	transparent = false
+}) => {
 	const styles = {
 		spinnerStyle: {
-			backgroundColor,
+			backgroundColor: transparent ? `${backgroundColor}44` : backgroundColor,
 			flex: 1,
 			justifyContent: "center",
 			alignItems: "center"

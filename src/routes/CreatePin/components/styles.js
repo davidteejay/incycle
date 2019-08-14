@@ -1,12 +1,15 @@
 import colors from '../../../config/colors'
+import { Dimensions } from 'react-native'
 
 export default {
 	container: {
-		flex: 1,
+		width: Dimensions.get('window').width,
+		height: Dimensions.get('window').height - 20,
 		backgroundColor: '#fff'
 	},
 	content: {
-		flex: 1,
+		width: '100%',
+		height: '100%',
 		display: 'flex',
 		alignItems: 'flex-start',
 		justifyContent: 'center',
@@ -14,12 +17,11 @@ export default {
 	},
 	topText: {
 		color: colors.black,
-		fontSize: 28
+		fontSize: 22
 	},
 	heading: {
-		fontSize: 88,
-		lineHeight: 90,
-		fontWeight: '900',
+		fontSize: 72,
+		lineHeight: 100,
 		color: colors.black,
 		marginVertical: 30
 	},
@@ -43,6 +45,7 @@ export default {
 	},
 	input: {
 		fontSize: 22,
+		fontFamily: 'Poppins',
 		height: 50,
 		width: 35,
 		textAlign: 'center',
@@ -51,11 +54,11 @@ export default {
 		color: '#000',
 		borderWidth: 1,
 		borderRadius: 3,
-		elevation: 1
+		// elevation: 1
 	},
 	bottomText: {
 		width: '75%',
-		color: colors.grey,
+		color: colors.darkGrey,
 		fontSize: 22,
 		textAlign: 'center',
 		alignSelf: 'center',

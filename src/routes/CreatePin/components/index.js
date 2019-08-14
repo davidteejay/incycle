@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
-import { View, Text, TextInput, ScrollView } from 'react-native'
+import { View, TextInput, ScrollView } from 'react-native'
 
 import colors from '../../../config/colors'
 import Button from '../../../components/Button'
-import StatusBar from '../../../components/StatusBar'
+import Preloader from "../../../components/Preloader";
+import Text from '../../../components/Text'
+
 import styles from './styles'
 
 export default class CreatePin extends Component {
@@ -25,15 +27,16 @@ export default class CreatePin extends Component {
 	}
 
 	render(){
+		const { pin1, pin2, pin3, pin4 } = this.props
+
 		return (
-			<View style={styles.container}>
-				<StatusBar backgroundColor={colors.green}/>
-				<ScrollView contentContainerStyle={styles.content}>
+			<ScrollView style={styles.container}>
+				<View style={styles.content}>
 					<Text style={{ ...styles.topText, color: colors.green }}>
 						Congrats, {this.props.name.split(" ")[0]}!{'\n'}
 						Now, let's create your quick login
 					</Text>
-					<Text style={styles.heading}>
+					<Text isBold style={styles.heading}>
 						Let's{'\n'}
 						Begin
 					</Text>
@@ -42,6 +45,7 @@ export default class CreatePin extends Component {
 					<Text style={styles.topText}>Create your 4-pin password</Text>
 					<View style={styles.inputCover}>
 						<TextInput
+							value={pin1}
 							style={{ ...styles.input, marginLeft: 0 }}
 							placeholder=""
 							// placeholderTextColor="#1f3f66"
@@ -56,6 +60,7 @@ export default class CreatePin extends Component {
 							onChangeText={this.handleInput.bind(this, "pin1")}
 						/>
 						<TextInput
+							value={pin2}
 							style={styles.input}
 							placeholder=""
 							// placeholderTextColor="#1f3f66"
@@ -70,6 +75,7 @@ export default class CreatePin extends Component {
 							onChangeText={this.handleInput.bind(this, "pin2")}
 						/>
 						<TextInput
+							value={pin3}
 							style={styles.input}
 							placeholder=""
 							// placeholderTextColor="#1f3f66"
@@ -84,6 +90,7 @@ export default class CreatePin extends Component {
 							onChangeText={this.handleInput.bind(this, "pin3")}
 						/>
 						<TextInput
+							value={pin4}
 							style={styles.input}
 							placeholder=""
 							// placeholderTextColor="#1f3f66"
@@ -102,10 +109,11 @@ export default class CreatePin extends Component {
 						Note: Your phone number and 4-pin password will be your signin details from now on
 					</Text>
 					<View style={styles.footer}>
-						<Button text="Sign In"/>
+						<Button text="Submit" onPress={() => this.props.signup()}/>
 					</View>
-				</ScrollView>
-			</View>
+				</View>
+				<Preloader modalVisible={this.props.createLoading}/>
+			</ScrollView>
 		)
 	}
 }
